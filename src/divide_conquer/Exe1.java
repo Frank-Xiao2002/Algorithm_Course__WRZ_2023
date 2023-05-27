@@ -3,6 +3,12 @@ package divide_conquer;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Exe1 is for exercise1.
+ * <p>
+ * The question is as follows:<br>
+ * 实现归并排序、二分查找、基于快排思想的选择算法。（Java or Python）<br>
+ */
 public class Exe1 {
     /**
      * Sort the array in ascending order using merge sort.
@@ -74,9 +80,9 @@ public class Exe1 {
     }
 
     /**
-     * Find the kth smallest element in arr.
+     * Find the kth smallest element in an array.
      *
-     * @param arr the array to be selected
+     * @param arr the array to be searched
      * @param k   the kth smallest
      * @return the kth smallest element in the array
      */

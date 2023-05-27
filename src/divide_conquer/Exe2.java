@@ -1,5 +1,8 @@
 package divide_conquer;
 
+/**
+ * Exe2 is for exercise2.
+ */
 public class Exe2 {
     /**
      * Find the maximum sum of an array's sub-array.

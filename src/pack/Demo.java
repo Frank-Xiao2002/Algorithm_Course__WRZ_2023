@@ -5,7 +5,19 @@ import divide_conquer.Exe2;
 
 import java.util.Arrays;
 
+/**
+ * Demo class is the class for main method.
+ * <p>
+ *
+ * @author Frank Xiao
+ */
 public class Demo {
+    /**
+     * Method main is for testing all the functions I wrote in my homework.
+     *
+     * @param args command line arguments, with little use
+     * @author Frank Xiao
+     */
     public static void main(String[] args) {
         int[] result = Exe1.MergeSort(new int[]{2, 9, 7, 3, 1, 0, 12, 8});
         System.out.println(Arrays.toString(result));
