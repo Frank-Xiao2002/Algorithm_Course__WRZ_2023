@@ -26,9 +26,9 @@ public class Demo {
         int select = Exe1.Select(new Integer[]{2, 9, 7, 3, 1, 0, 12, 8}, 5);
         System.out.println("select = " + select);
 //        -----------------------------------------------------
-        int sum = Exe2.MaxSubSum(new int[]{-2, 11, -4, 13, -5, -2});
+        int sum = Exe2.MaxSubSum(new Integer[]{-2, 11, -4, 13, -5, -2});
         System.out.println("sum = " + sum);
-        sum = Exe2.MaxSubSum(new int[]{-6, 2, 4, -7, 5, 3, 2, -1, 6, -9, 10, -2});
+        sum = Exe2.MaxSubSum(new Integer[]{-6, 2, 4, -7, 5, 3, 2, -1, 6, -9, 10, -2});
         System.out.println("sum = " + sum);
     }
 }

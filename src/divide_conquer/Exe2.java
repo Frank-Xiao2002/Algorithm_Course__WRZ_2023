@@ -1,5 +1,7 @@
 package divide_conquer;
 
+import java.util.Arrays;
+
 /**
  * Exe2 is for exercise2.
  * <p>
@@ -17,9 +19,28 @@ public class Exe2 {
      * @param arr the array to be found
      * @return the maximum sum of the array's sub-array
      */
-    public static int MaxSubSum(int[] arr) {
-        int sum = 0;
+    public static int MaxSubSum(Integer[] arr) {
+        if (arr.length <= 1)
+            return Math.max(0, arr[0]);
 
-        return sum;
+        Integer[] left = Arrays.copyOfRange(arr, 0, arr.length / 2), right = Arrays.copyOfRange(arr, arr.length / 2, arr.length);
+        int leftMax = MaxSubSum(left);
+        int rightMax = MaxSubSum(right);
+        int r = 0, l = 0, tmp = 0;
+        for (int i = arr.length / 2 + 1; i < arr.length; i++) {
+            if (tmp + arr[i] > r) {
+                r = tmp + arr[i];
+            }
+            tmp += arr[i];
+        }
+        tmp = 0;
+        for (int i = arr.length / 2 - 1; i >= 0; i--) {
+            if (tmp + arr[i] > l)
+                l = tmp + arr[i];
+            tmp += arr[i];
+        }
+        int middleMax = arr[arr.length / 2] + l + r;
+
+        return Math.max(middleMax, Math.max(leftMax, rightMax));
     }
 }
