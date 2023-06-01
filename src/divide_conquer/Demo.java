@@ -1,7 +1,4 @@
-package pack;
-
-import divide_conquer.Exe1;
-import divide_conquer.Exe2;
+package divide_conquer;
 
 import java.util.Arrays;
 
