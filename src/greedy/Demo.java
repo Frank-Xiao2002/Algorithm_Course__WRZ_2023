@@ -2,6 +2,8 @@ package greedy;
 
 import data_structure.UndirectedAcyclicAcyclicGraph;
 
+import java.util.Arrays;
+
 /**
  * Demo class is the class for main method.
  * <p>
@@ -10,6 +12,18 @@ import data_structure.UndirectedAcyclicAcyclicGraph;
  */
 public class Demo {
     public static void main(String[] args) {
-        Exe1.Kruskal(new UndirectedAcyclicAcyclicGraph(8));
+        UndirectedAcyclicAcyclicGraph g = new UndirectedAcyclicAcyclicGraph(8);
+        g.addEdge(1, 3, 5);
+        g.addEdge(1, 2, 3);
+        g.addEdge(3, 4, 12);
+        g.addEdge(2, 4, 4);
+        g.addEdge(4, 5, 9);
+        g.addEdge(4, 8, 8);
+        g.addEdge(5, 8, 1);
+        g.addEdge(6, 5, 4);
+        g.addEdge(6, 7, 6);
+        g.addEdge(5, 7, 5);
+        g.addEdge(7, 8, 20);
+        Exe1.Kruskal(g);
     }
 }

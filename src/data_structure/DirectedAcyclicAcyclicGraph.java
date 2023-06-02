@@ -16,7 +16,7 @@ public class DirectedAcyclicAcyclicGraph extends AcyclicGraph {
      * @param length length of the edge
      */
     @Override
-    public void setEdge(int start, int end, int length) {
+    public void addEdge(int start, int end, int length) {
         edges[start][end] = length;
     }
 }

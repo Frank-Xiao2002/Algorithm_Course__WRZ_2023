@@ -33,12 +33,25 @@ public abstract class AcyclicGraph {
     }
 
     /**
-     * Get the edges.
+     * Get the length of the specified edge.
      *
-     * @return a two-dimensional array representing the edges.
+     * @param start index of the start node
+     * @param end   index of the end node
+     * @return length of the edge
      */
-    public int[][] getEdges() {
-        return edges;
+    public int lengthOf(int start, int end) {
+        return edges[start][end];
+    }
+
+    /**
+     * Test whether an edge exists between the two nodes
+     *
+     * @param start index of the start node, greater than 0
+     * @param end   index of the end node, greater than 0
+     * @return true if there is an edge connecting two nodes, false otherwise
+     */
+    public boolean hasEdge(int start, int end) {
+        return edges[start - 1][end - 1] > 0;
     }
 
     /**
@@ -49,6 +62,6 @@ public abstract class AcyclicGraph {
      * @param end    index of the end node
      * @param length length of the edge
      */
-    public abstract void setEdge(int start, int end, int length);
+    public abstract void addEdge(int start, int end, int length);
 
 }
