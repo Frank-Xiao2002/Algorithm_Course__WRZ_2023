@@ -10,21 +10,27 @@ package greedy;
  */
 public class Exe1 {
     /**
+     * Huffman algorithm implementation
      *
+     * @param percents an array to store the percentage of each element
      */
-    public static void Huffman() {
+    public static void Huffman(int[] percents) {
 
     }
 
     /**
+     * Kruskal algorithm implementation
      *
+     * @param graph the graph to be calculated
      */
     public static void Kruskal(AcyclicGraph graph) {
 
     }
 
     /**
-     * @param graph
+     * Dijkstra algorithm implementation
+     *
+     * @param graph the graph to be calculated
      */
     public static void Dijkstra(AcyclicGraph graph) {
 
