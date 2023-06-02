@@ -1,4 +1,4 @@
-package greedy;
+package data_structure;
 
 /**
  * AcyclicGraph is to describe one kind of the graph abstract data structure.<br>

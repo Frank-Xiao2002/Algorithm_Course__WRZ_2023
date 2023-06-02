@@ -1,5 +1,8 @@
 package greedy;
 
+import data_structure.AcyclicGraph;
+import data_structure.UndirectedAcyclicAcyclicGraph;
+
 /**
  * Exe1 is for exercise1.
  * <p>
@@ -23,8 +26,10 @@ public class Exe1 {
      *
      * @param graph the graph to be calculated
      */
-    public static void Kruskal(AcyclicGraph graph) {
-
+    public static void Kruskal(UndirectedAcyclicAcyclicGraph graph) {
+        int small = Integer.MAX_VALUE;
+        int start, end;
+        System.out.println(graph.getTotalNodes());
     }
 
     /**
