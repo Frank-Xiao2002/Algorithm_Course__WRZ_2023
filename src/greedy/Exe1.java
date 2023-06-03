@@ -67,7 +67,12 @@ public class Exe1 {
      */
     public static void Dijkstra(UndirectedAcyclicGraph graph, int start) {
         if (start <= 0 || start >= graph.getTotalNodes() + 1) throw new AssertionError();
-        HashMap<Integer, Integer> map = graph.getEdgesStartWith(start);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(start, start);
+        while (map.size() != graph.getTotalNodes()) {
+            /*find the smallest edge*/
+
+        }
 
     }
 }
