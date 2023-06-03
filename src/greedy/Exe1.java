@@ -67,6 +67,6 @@ public class Exe1 {
     public static void Dijkstra(AcyclicGraph graph, int start) {
         if (start <= 0 || start >= graph.getTotalNodes() + 1) throw new AssertionError();
         start--;
-
+        System.out.println();
     }
 }
