@@ -1,11 +1,14 @@
 package data_structure;
 
+import java.util.HashMap;
+
 /**
  * AcyclicGraph is to describe one kind of the graph abstract data structure.<br>
+ * <p>
  * This class represents graphs that have no cycles, thus a two-dimensional array can be
  * used to store length of every edge.<br>
- * It's implemented by two subclasses, {@link UndirectedAcyclicAcyclicGraph},
- * {@link DirectedAcyclicAcyclicGraph}.
+ * It's implemented by two subclasses, {@link UndirectedAcyclicGraph},
+ * {@link DirectedAcyclicGraph}.
  *
  * @author Frank_Xiao
  */
@@ -64,4 +67,17 @@ public abstract class AcyclicGraph {
      */
     public abstract void addEdge(int start, int end, int length);
 
+    /**
+     * Find all edges starting from one node.
+     *
+     * @param start index of the starting node, an integer greater than 0
+     * @return a {@link HashMap} storing end node's index and its corresponding length
+     */
+    public HashMap<Integer, Integer> getEdgesStartWith(int start) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < totalNodes; i++)
+            if (edges[start - 1][i] > 0)
+                map.put(i + 1, edges[start - 1][i]);
+        return map;
+    }
 }

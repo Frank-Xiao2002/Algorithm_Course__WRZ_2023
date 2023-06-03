@@ -3,8 +3,8 @@ package data_structure;
 /**
  *
  */
-public class DirectedAcyclicAcyclicGraph extends AcyclicGraph {
-    public DirectedAcyclicAcyclicGraph(int totalNodes) {
+public class DirectedAcyclicGraph extends AcyclicGraph {
+    public DirectedAcyclicGraph(int totalNodes) {
         super(totalNodes);
     }
 
@@ -17,6 +17,7 @@ public class DirectedAcyclicAcyclicGraph extends AcyclicGraph {
      */
     @Override
     public void addEdge(int start, int end, int length) {
+        if (start == end) throw new AssertionError();
         edges[start][end] = length;
     }
 }

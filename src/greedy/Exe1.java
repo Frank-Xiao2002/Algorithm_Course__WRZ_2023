@@ -1,8 +1,9 @@
 package greedy;
 
-import data_structure.AcyclicGraph;
-import data_structure.UndirectedAcyclicAcyclicGraph;
+import data_structure.UndirectedAcyclicGraph;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
 
 /**
  * Exe1 is for exercise1.
@@ -27,7 +28,7 @@ public class Exe1 {
      *
      * @param graph the graph to be calculated
      */
-    public static void Kruskal(@NotNull UndirectedAcyclicAcyclicGraph graph) {
+    public static void Kruskal(@NotNull UndirectedAcyclicGraph graph) {
         int sv = 0, ev = 0;
         //initially, every node is in its own branch
         int[] branch = new int[graph.getTotalNodes()];
@@ -64,9 +65,9 @@ public class Exe1 {
      * @param graph the graph to be calculated
      * @param start index of the start node, an integer greater than 0
      */
-    public static void Dijkstra(AcyclicGraph graph, int start) {
+    public static void Dijkstra(UndirectedAcyclicGraph graph, int start) {
         if (start <= 0 || start >= graph.getTotalNodes() + 1) throw new AssertionError();
-        start--;
-        System.out.println();
+        HashMap<Integer, Integer> map = graph.getEdgesStartWith(start);
+
     }
 }

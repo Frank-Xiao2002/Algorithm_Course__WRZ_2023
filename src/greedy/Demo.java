@@ -1,6 +1,6 @@
 package greedy;
 
-import data_structure.UndirectedAcyclicAcyclicGraph;
+import data_structure.UndirectedAcyclicGraph;
 
 /**
  * Demo class is the class for the main method.
@@ -10,7 +10,7 @@ import data_structure.UndirectedAcyclicAcyclicGraph;
  */
 public class Demo {
     public static void main(String[] args) {
-        UndirectedAcyclicAcyclicGraph g = new UndirectedAcyclicAcyclicGraph(8);
+        UndirectedAcyclicGraph g = new UndirectedAcyclicGraph(8);
         g.addEdge(3, 1, 5);
         g.addEdge(1, 2, 3);
         g.addEdge(3, 4, 12);

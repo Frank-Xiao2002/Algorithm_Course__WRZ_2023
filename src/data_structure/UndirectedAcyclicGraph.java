@@ -1,7 +1,7 @@
 package data_structure;
 
-public class UndirectedAcyclicAcyclicGraph extends AcyclicGraph {
-    public UndirectedAcyclicAcyclicGraph(int totalNodes) {
+public class UndirectedAcyclicGraph extends AcyclicGraph {
+    public UndirectedAcyclicGraph(int totalNodes) {
         super(totalNodes);
     }
 
