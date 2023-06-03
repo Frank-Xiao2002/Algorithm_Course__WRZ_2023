@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"divide_conquer"},{"l":"pack"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"data_structure"},{"l":"divide_conquer"},{"l":"greedy"}];updateSearchResults();

@@ -16,7 +16,7 @@ public class Exe1 {
     /**
      * Huffman algorithm implementation
      *
-     * @param percents an array to store the percentage of each element
+     * @param percents an array to store the percentage of each element, e.g., 13 means 13%
      */
     public static void Huffman(int[] percents) {
 
@@ -29,34 +29,44 @@ public class Exe1 {
      */
     public static void Kruskal(@NotNull UndirectedAcyclicAcyclicGraph graph) {
         int sv = 0, ev = 0;
-        boolean[] used = new boolean[graph.getTotalNodes()];
+        //initially, every node is in its own branch
+        int[] branch = new int[graph.getTotalNodes()];
+        for (int i = 0; i < graph.getTotalNodes(); i++)
+            branch[i] = i;
 
-        for (int x = 1; x < graph.getTotalNodes(); x++) {//add n-1 edges, one at a time
+        /* add n-1 edges, one at a time */
+        for (int x = 1; x < graph.getTotalNodes(); x++) {
             int small = Integer.MAX_VALUE;
             /* find the smallest edge */
             for (int i = 0; i < graph.getTotalNodes(); i++)
                 for (int j = i + 1; j < graph.getTotalNodes(); j++)
-                    if (i != j && !(used[i] && used[j]) && graph.hasEdge(i + 1, j + 1) && small > graph.lengthOf(i, j)) {
-                        small = graph.lengthOf(i, j);
-                        sv = i;
-                        ev = j;
-                    }
-            //check if this would cause cycles
-            if (!used[sv] || !used[ev]) {//at least one node hasn't been used
-                used[sv] = true;
-                used[ev] = true;
-
-                System.out.println((sv + 1) + "--" + (ev + 1));
-            }
+                    if (branch[i] != branch[j])//they are in different branches
+                        if (graph.hasEdge(i + 1, j + 1))//there IS an edge connecting them
+                            if (small > graph.lengthOf(i, j)) {//the edge is smaller than the current value
+                                small = graph.lengthOf(i, j);//renew the value
+                                /*record the nodes*/
+                                sv = i;
+                                ev = j;
+                            }
+            /*renew every node's branch no.*/
+            int min = Math.min(branch[sv], branch[ev]), max = Math.max(branch[sv], branch[ev]);
+            for (int i = 0; i < graph.getTotalNodes(); i++)
+                if (branch[i] == max)
+                    branch[i] = min;
+            /*print out the selected edge*/
+            System.out.println((sv + 1) + "--" + (ev + 1));
         }
     }
 
     /**
-     * Dijkstra algorithm implementation
+     * Dijkstra algorithm implementation<br>
      *
      * @param graph the graph to be calculated
+     * @param start index of the start node, an integer greater than 0
      */
-    public static void Dijkstra(AcyclicGraph graph) {
+    public static void Dijkstra(AcyclicGraph graph, int start) {
+        if (start <= 0 || start >= graph.getTotalNodes() + 1) throw new AssertionError();
+        start--;
 
     }
 }

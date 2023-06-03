@@ -2,10 +2,8 @@ package greedy;
 
 import data_structure.UndirectedAcyclicAcyclicGraph;
 
-import java.util.Arrays;
-
 /**
- * Demo class is the class for main method.
+ * Demo class is the class for the main method.
  * <p>
  *
  * @author Frank Xiao
@@ -13,7 +11,7 @@ import java.util.Arrays;
 public class Demo {
     public static void main(String[] args) {
         UndirectedAcyclicAcyclicGraph g = new UndirectedAcyclicAcyclicGraph(8);
-        g.addEdge(1, 3, 5);
+        g.addEdge(3, 1, 5);
         g.addEdge(1, 2, 3);
         g.addEdge(3, 4, 12);
         g.addEdge(2, 4, 4);
