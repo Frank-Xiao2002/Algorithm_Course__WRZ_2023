@@ -20,4 +20,17 @@ public class UndirectedAcyclicGraph extends AcyclicGraph {
         edges[start - 1][end - 1] = length;
         edges[end - 1][start - 1] = length;
     }
+
+    /**
+     * Delete an edge in an undirected acyclic graph.
+     *
+     * @param start start node of the edge
+     * @param end   end node of the edge
+     */
+    @Override
+    public void deleteEdge(int start, int end) {
+        if (start <= 0 || end > totalNodes) throw new AssertionError();
+        edges[start][end] = 0;
+        edges[end][start] = 0;
+    }
 }

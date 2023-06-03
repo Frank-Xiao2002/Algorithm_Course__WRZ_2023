@@ -20,4 +20,16 @@ public class DirectedAcyclicGraph extends AcyclicGraph {
         if (start == end) throw new AssertionError();
         edges[start][end] = length;
     }
+
+    /**
+     * Delete an edge in a directed acyclic graph.
+     *
+     * @param start start node of the edge
+     * @param end   end node of the edge
+     */
+    @Override
+    public void deleteEdge(int start, int end) {
+        if (start <= 0 || end > totalNodes) throw new AssertionError();
+        edges[start][end] = 0;
+    }
 }

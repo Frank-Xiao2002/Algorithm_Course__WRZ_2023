@@ -68,6 +68,14 @@ public abstract class AcyclicGraph {
     public abstract void addEdge(int start, int end, int length);
 
     /**
+     * Delete an edge.
+     *
+     * @param start start node of the edge
+     * @param end   end node of the edge
+     */
+    public abstract void deleteEdge(int start, int end);
+
+    /**
      * Find all edges starting from one node.
      *
      * @param start index of the starting node, an integer greater than 0
