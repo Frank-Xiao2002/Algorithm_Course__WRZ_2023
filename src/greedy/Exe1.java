@@ -1,10 +1,10 @@
 package greedy;
 
+import data_structure.BinaryTree;
 import data_structure.UndirectedAcyclicGraph;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -19,34 +19,43 @@ public class Exe1 {
     /**
      * Huffman algorithm implementation
      *
-     * @param input a hashmap to store the percentage of each element, e.g., ('a',13) means 'a' takes 13%
+     * @param input a hashmap to store the frequency of each element, e.g., ('a',13) means 'a' appears 13 times
      * @return a hashmap storing each character and its path in Huffman tree, which is described in {@link String}
      */
     public static HashMap<Character, String> Huffman(HashMap<Character, Integer> input) {
-
-        HashMap<Character, String> result = new HashMap<>(input.size());
-        for (int times = 0; times < input.size(); times++) {
-            /*find the smallest two percentages*/
-            Collection<Integer> values = input.values();
-            int s1 = Collections.min(values);
-            values.remove(s1);
-            int s2 = Collections.min(values);//s1 is no greater than s2
-            char c1 = 'a', c2 = 'a';
-            boolean isSet = false;
-            for (char c : input.keySet()) {
-                int v = input.get(c);
-                if (v == s1 && !isSet) {
-                    isSet = true;
-                    c1 = c;
-                } else if (v == s2)
-                    c2 = c;
-            }
-            input.remove(c1);
-            input.remove(c2);
-
-
+        HashMap<Character, String> result = new HashMap<>();
+        ArrayList<BinaryTree> list = new ArrayList<>();
+        int x = 0;
+        for (char c : input.keySet()) {
+            result.put(c, "");
+            list.add(new BinaryTree(c, input.get(c)));
         }
+        /*merge two nodes one at a time*/
+        while (list.size() > 1) {
+            BinaryTree n1 = getSmallestFrequency(list);
+            list.remove(n1);
+            BinaryTree n2 = getSmallestFrequency(list);
+            list.remove(n2);
+            BinaryTree root = new BinaryTree(null, n1.getFrequency() + n2.getFrequency());
+            root.setLeft(n1);
+            root.setRight(n2);
+            n1.setLor(-1);
+            n2.setLor(1);
+            list.add(root);
+        }
+        BinaryTree r = list.get(0);
+
         return result;
+    }
+
+    private static BinaryTree getSmallestFrequency(ArrayList<BinaryTree> list) {
+        BinaryTree node = list.get(0);
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i).getFrequency() < node.getFrequency()) {
+                node = list.get(i);
+            }
+        }
+        return node;
     }
 
     /**

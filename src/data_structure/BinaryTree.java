@@ -13,11 +13,11 @@ public class BinaryTree {
     /**
      * value of the stored character, null if it's not a leaf
      */
-    private Character ch;
+    private final Character ch;
     /**
      * frequency of the character
      */
-    private int frequency;
+    private final int frequency;
     /**
      * indicate whether it's a left subtree of a right subtree
      */
@@ -35,18 +35,44 @@ public class BinaryTree {
         this.frequency = frequency;
     }
 
-    /**
-     * @param left
-     * @param right
-     * @param ch
-     * @param frequency
-     * @param lor
-     */
-    public BinaryTree(BinaryTree left, BinaryTree right, Character ch, int frequency, int lor) {
+    public BinaryTree getLeft() {
+        return left;
+    }
+
+    public void setLeft(BinaryTree left) {
         this.left = left;
+    }
+
+    public BinaryTree getRight() {
+        return right;
+    }
+
+    public void setRight(BinaryTree right) {
         this.right = right;
-        this.ch = ch;
-        this.frequency = frequency;
+    }
+
+    public Character getCh() {
+        return ch;
+    }
+
+    public int getFrequency() {
+        return frequency;
+    }
+
+    public void setLor(int lor) {
         this.lor = lor;
+    }
+
+    public int getLor() {
+        return lor;
+    }
+
+    @Override
+    public String toString() {
+        return "BinaryTree{" +
+                "ch=" + ch +
+                ", frequency=" + frequency +
+                ", lor=" + lor +
+                '}';
     }
 }
