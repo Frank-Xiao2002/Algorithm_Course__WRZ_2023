@@ -58,7 +58,8 @@ public abstract class AcyclicGraph {
     }
 
     /**
-     * Add an edge to the graph.<br>
+     * Add an edge to the graph. If an edge already exists, it will be replaced by the new one.
+     * <p>
      * Depending on different kinds of the graph, it is implemented differently.
      *
      * @param start  index of the start node

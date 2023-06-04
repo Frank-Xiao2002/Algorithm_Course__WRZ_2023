@@ -9,7 +9,7 @@ public class DirectedAcyclicGraph extends AcyclicGraph {
     }
 
     /**
-     * Add an edge to the directed graph.
+     * Add an edge to the directed graph. If an edge already exists, it will be replaced by the new one.
      *
      * @param start  index of the start node
      * @param end    index of the end node

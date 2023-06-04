@@ -3,6 +3,8 @@ package greedy;
 import data_structure.UndirectedAcyclicGraph;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -17,10 +19,34 @@ public class Exe1 {
     /**
      * Huffman algorithm implementation
      *
-     * @param percents an array to store the percentage of each element, e.g., 13 means 13%
+     * @param input a hashmap to store the percentage of each element, e.g., ('a',13) means 'a' takes 13%
+     * @return a hashmap storing each character and its path in Huffman tree, which is described in {@link String}
      */
-    public static void Huffman(int[] percents) {
+    public static HashMap<Character, String> Huffman(HashMap<Character, Integer> input) {
 
+        HashMap<Character, String> result = new HashMap<>(input.size());
+        for (int times = 0; times < input.size(); times++) {
+            /*find the smallest two percentages*/
+            Collection<Integer> values = input.values();
+            int s1 = Collections.min(values);
+            values.remove(s1);
+            int s2 = Collections.min(values);//s1 is no greater than s2
+            char c1 = 'a', c2 = 'a';
+            boolean isSet = false;
+            for (char c : input.keySet()) {
+                int v = input.get(c);
+                if (v == s1 && !isSet) {
+                    isSet = true;
+                    c1 = c;
+                } else if (v == s2)
+                    c2 = c;
+            }
+            input.remove(c1);
+            input.remove(c2);
+
+
+        }
+        return result;
     }
 
     /**
@@ -36,6 +62,7 @@ public class Exe1 {
             branch[i] = i;
 
         /* add n-1 edges, one at a time */
+        System.out.println("Kruskal result:");
         for (int x = 1; x < graph.getTotalNodes(); x++) {
             int small = Integer.MAX_VALUE;
             /* find the smallest edge */
@@ -67,12 +94,53 @@ public class Exe1 {
      */
     public static void Dijkstra(UndirectedAcyclicGraph graph, int start) {
         if (start <= 0 || start >= graph.getTotalNodes() + 1) throw new AssertionError();
-        HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(start, start);
-        while (map.size() != graph.getTotalNodes()) {
-            /*find the smallest edge*/
-
+        start--;//let start be in range of [0,total-1]
+        /*create two hashmaps, one to store distance from start to each node, one to store the last node on the route to each node*/
+        HashMap<Integer, Integer> distances = new HashMap<>(), last = new HashMap<>();
+        /*create a boolean array to store whether the node has reached or not*/
+        boolean[] isCertain = new boolean[graph.getTotalNodes()];
+        /*init maps*/
+        for (int i = 0; i < graph.getTotalNodes(); i++) {
+            distances.put(i, Integer.MAX_VALUE);
+            last.put(i, -1);
         }
-
+        distances.put(start, 0);
+        last.put(start, start);
+        /*find the smallest distance up to now*/
+        for (int times = 0; times < graph.getTotalNodes(); times++) {
+            int smallNode = -1, smallDist = Integer.MAX_VALUE;
+            for (int i = 0; i < graph.getTotalNodes(); i++)
+                //find the node that has not been reached and has the shortest distance
+                if (!isCertain[i] && distances.get(i) < smallDist) {
+                    smallDist = distances.get(i);
+                    smallNode = i;
+                }
+//            System.out.println("smallNode = " + (smallNode + 1));
+//            System.out.println("smallDist = " + smallDist);
+            isCertain[smallNode] = true;
+            /*update info on two maps*/
+            HashMap<Integer, Integer> map = graph.getEdgesStartWith(smallNode + 1);
+            for (int node : map.keySet()) {
+                node--;//to change range
+                if (node != last.get(smallNode)) {//don't calculate the calculated route
+                    if (distances.get(node) == Integer.MAX_VALUE) {//the node hasn't been reached yet
+                        distances.put(node, map.get(node + 1) + distances.get(smallNode));
+                        last.put(node, smallNode);
+                    } else {//the node has been reached already
+                        //compare the old and the newly found route
+                        Integer oldDist = distances.put(node, Math.min(distances.get(node), distances.get(smallNode) + map.get(node + 1)));
+                        if (oldDist > distances.get(node)) {//the new distance is smaller than the previous one
+                            last.put(node, smallNode);//update 'last' map
+                        }
+                    }
+                }
+            }
+        }
+        /*print out result table*/
+        System.out.println("Dijkstra result table:");
+        System.out.println("Node\tDistance\tlast");
+        for (int i = 0; i < graph.getTotalNodes(); i++)
+            System.out.println((i + 1) + "\t\t" + distances.get(i) + "\t\t\t" + (last.get(i) + 1));
+//        System.out.println(Arrays.toString(isCertain));
     }
 }

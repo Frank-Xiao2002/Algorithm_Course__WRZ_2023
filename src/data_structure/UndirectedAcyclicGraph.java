@@ -6,7 +6,8 @@ public class UndirectedAcyclicGraph extends AcyclicGraph {
     }
 
     /**
-     * Add an edge to the undirected graph.<br>
+     * Add an edge to the undirected graph. If an edge already exists, it will be replaced by the new one.
+     * <p>
      * start and end are two positive integers
      *
      * @param start  index of the start node
