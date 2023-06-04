@@ -23,31 +23,35 @@ public class Exe1 {
      * @return a hashmap storing each character and its path in Huffman tree, which is described in {@link String}
      */
     public static HashMap<Character, String> Huffman(HashMap<Character, Integer> input) {
-        HashMap<Character, String> result = new HashMap<>();
         ArrayList<BinaryTree> list = new ArrayList<>();
         int x = 0;
-        for (char c : input.keySet()) {
-            result.put(c, "");
+        for (char c : input.keySet())
             list.add(new BinaryTree(c, input.get(c)));
-        }
+
         /*merge two nodes one at a time*/
         while (list.size() > 1) {
             BinaryTree n1 = getSmallestFrequency(list);
             list.remove(n1);
             BinaryTree n2 = getSmallestFrequency(list);
             list.remove(n2);
-            BinaryTree root = new BinaryTree(null, n1.getFrequency() + n2.getFrequency());
-            root.setLeft(n1);
-            root.setRight(n2);
-            n1.setLor(-1);
+            BinaryTree r = new BinaryTree(null, n1.getFrequency() + n2.getFrequency());
+            r.setLeft(n1);
+            r.setRight(n2);
+            n1.setLor(0);
             n2.setLor(1);
-            list.add(root);
+            list.add(r);
         }
-        BinaryTree r = list.get(0);
-
+        HashMap<Character, String> result = new HashMap<>();
+        createHuffmanCode(list.get(0), result);
         return result;
     }
 
+    /**
+     * Search through the list and find the node with the smallest frequency
+     *
+     * @param list list to be found
+     * @return a binary tree node with the smallest frequency in the list
+     */
     private static BinaryTree getSmallestFrequency(ArrayList<BinaryTree> list) {
         BinaryTree node = list.get(0);
         for (int i = 1; i < list.size(); i++) {
@@ -56,6 +60,17 @@ public class Exe1 {
             }
         }
         return node;
+    }
+
+    /**
+     * Build the Huffman code with Huffman tree.
+     *
+     * @param root   root node of the Huffman tree
+     * @param result a Hashmap to store results
+     */
+    private static void createHuffmanCode(BinaryTree root, HashMap<Character, String> result) {
+        result.put(root.getCh(), result.get())
+
     }
 
     /**

@@ -21,7 +21,7 @@ public class BinaryTree {
     /**
      * indicate whether it's a left subtree of a right subtree
      */
-    private int lor;
+    private int lor = -1;
 
 
     /**
@@ -74,5 +74,9 @@ public class BinaryTree {
                 ", frequency=" + frequency +
                 ", lor=" + lor +
                 '}';
+    }
+
+    public boolean isLeaf() {
+        return left == null && right == null;
     }
 }
