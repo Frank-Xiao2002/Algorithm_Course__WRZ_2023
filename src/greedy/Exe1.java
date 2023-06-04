@@ -42,7 +42,7 @@ public class Exe1 {
             list.add(r);
         }
         HashMap<Character, String> result = new HashMap<>();
-        createHuffmanCode(list.get(0), result);
+        createHuffmanCode(list.get(0), result, "");
         return result;
     }
 
@@ -65,12 +65,17 @@ public class Exe1 {
     /**
      * Build the Huffman code with Huffman tree.
      *
-     * @param root   root node of the Huffman tree
+     * @param node   node of the Huffman tree
      * @param result a Hashmap to store results
+     * @param trace  the trace already built
      */
-    private static void createHuffmanCode(BinaryTree root, HashMap<Character, String> result) {
-        result.put(root.getCh(), result.get())
-
+    private static void createHuffmanCode(BinaryTree node, HashMap<Character, String> result, String trace) {
+        if (node.isLeaf()) {
+            result.put(node.getCh(), trace);
+        } else {
+            createHuffmanCode(node.getLeft(), result, trace.concat("0"));
+            createHuffmanCode(node.getRight(), result, trace.concat("1"));
+        }
     }
 
     /**

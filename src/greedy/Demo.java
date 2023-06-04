@@ -1,7 +1,5 @@
 package greedy;
 
-import data_structure.UndirectedAcyclicGraph;
-
 import java.util.HashMap;
 
 /**
@@ -34,6 +32,19 @@ public class Demo {
         map.put('d', 13);
         map.put('e', 14);
         map.put('f', 85);
-        Exe1.Huffman(map);
+        HashMap<Character, String> result = Exe1.Huffman(map);
+        map.clear();
+        map.put('*', 5);
+        map.put('w', 4);
+        map.put('l', 4);
+        map.put('e', 2);
+        map.put('i', 2);
+        map.put('r', 1);
+        map.put('u', 1);
+
+        result = Exe1.Huffman(map);
+        for (char c : result.keySet())
+            System.out.println(c + "--" + result.get(c));
+
     }
 }

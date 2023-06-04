@@ -10,5 +10,7 @@ package greedy;
  * 所有金币都可以随意分割，分割完的金币重量比（单位价格）不变，请问阿里巴巴最多可以拿走多少价值金币？<br>
  */
 public class Exe2 {
+    public static int Alibaba(int N) {
 
+    }
 }
