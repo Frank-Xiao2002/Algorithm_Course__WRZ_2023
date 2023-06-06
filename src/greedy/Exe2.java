@@ -20,11 +20,15 @@ public class Exe2 {
      * @param v an array to tell the value of each heap
      * @return the maximum value of the bag
      */
-    public static double Alibaba(int[] m, int[] v) {
-        if (m.length != v.length) throw new AssertionError();
+    public static double Alibaba(int N, int T, int[] m, int[] v) {
+        if (N <= 0 || m.length != N || v.length != N || T <= 0) throw new AssertionError();
         ArrayList<Double> vpm = new ArrayList<>();
-        for (int i = 0; i < m.length; i++)
+        ArrayList<Integer> mass = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
             vpm.add((double) v[i] / m[i]);
+            mass.add(m[i]);
+        }
+        System.out.println(vpm);
         Comparator<Double> comparator = new Comparator<>() {
             @Override
             public int compare(Double o1, Double o2) {
@@ -35,14 +39,15 @@ public class Exe2 {
                 else return 1;
             }
         };
-        double remain = 1000, totalValue = 0.0;
+        double remain = T, totalValue = 0.0;
         while (remain > 0 && vpm.size() > 0) {
             Double maxVPM = vpm.stream().max(comparator).get();
             int index = vpm.indexOf(maxVPM);
-            double used = Math.min(remain, m[index]);
+            double used = Math.min(remain, mass.get(index));
             remain -= used;
             totalValue += used * maxVPM;
             vpm.remove(maxVPM);
+            mass.remove(index);
         }
         return totalValue;
     }
