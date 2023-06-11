@@ -1,7 +1,5 @@
 package dynamic;
 
-import java.util.Arrays;
-
 /**
  * Exe2 is for exercise2.
  * <p>
