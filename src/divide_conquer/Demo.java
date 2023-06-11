@@ -3,17 +3,16 @@ package divide_conquer;
 import java.util.Arrays;
 
 /**
- * Demo class is the class for main method.
+ * Demo class is the class for the main method.
  * <p>
  *
  * @author Frank Xiao
  */
 public class Demo {
     /**
-     * Method main is for testing all the functions I wrote in my homework.
+     * main method for testing homework
      *
-     * @param args command line arguments, with little use
-     * @author Frank Xiao
+     * @param args command line arguments
      */
     public static void main(String[] args) {
         int[] result = Exe1.MergeSort(new int[]{2, 9, 7, 3, 1, 0, 12, 8});

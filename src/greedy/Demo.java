@@ -6,11 +6,15 @@ import java.util.HashMap;
 
 /**
  * Demo class is the class for the main method.
- * <p>
  *
  * @author Frank Xiao
  */
 public class Demo {
+    /**
+     * main method for testing homework
+     *
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
         UndirectedAcyclicGraph graph = new UndirectedAcyclicGraph(8);
         graph.addEdge(3, 1, 5);
