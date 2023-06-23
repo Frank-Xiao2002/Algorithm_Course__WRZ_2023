@@ -18,6 +18,8 @@ package dynamic;
  *     </tr>
  * </table>
  * 给出一个切割方案使切割后总收益最高。
+ *
+ * @author Frank_Xiao
  */
 public class Exe1 {
 

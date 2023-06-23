@@ -8,6 +8,8 @@ import java.util.Arrays;
  * <p>
  * The question is as follows:<br>
  * 实现归并排序、二分查找、基于快排思想的选择算法。（Java or Python）<br>
+ *
+ * @author Frank_Xiao
  */
 public class Exe1 {
     /**
