@@ -16,6 +16,8 @@ public class Exe2 {
     /**
      * Solve the problem Exercise 2 in greedy part.
      *
+     * @param N
+     * @param T
      * @param m an array to tell the mass of each heap
      * @param v an array to tell the value of each heap
      * @return the maximum value of the bag
